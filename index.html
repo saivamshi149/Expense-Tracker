@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>💰 Expense Tracker</h2>
+
+    <div class="balance">
+      <h3>Your Balance</h3>
+      <h1 id="balance">₹0</h1>
+    </div>
+
+    <div class="inc-exp-container">
+      <div>
+        <h4>Income</h4>
+        <p id="money-plus" class="money plus">₹0</p>
+      </div>
+      <div>
+        <h4>Expense</h4>
+        <p id="money-minus" class="money minus">₹0</p>
+      </div>
+    </div>
+
+    <!-- Toggle buttons -->
+    <div class="toggle-buttons">
+      <button id="show-add" class="btn">➕ Add Transaction</button>
+      <button id="show-history" class="btn">📜 History</button>
+    </div>
+
+    <!-- Add Transaction Section -->
+    <div id="form-section">
+      <form id="form">
+        <h3>Add New Transaction</h3>
+        <div class="form-control">
+          <label for="text">Text</label>
+          <input type="text" id="text" placeholder="Enter text..." required />
+        </div>
+        <div class="form-control">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" placeholder="Enter amount..." required />
+        </div>
+        <div class="form-control">
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="Food">🍔 Food</option>
+            <option value="Transport">🚕 Transport</option>
+            <option value="Shopping">🛍️ Shopping</option>
+            <option value="Salary">💼 Salary</option>
+            <option value="Other">📦 Other</option>
+          </select>
+        </div>
+        <div class="form-control">
+          <label for="date">Date</label>
+          <input type="date" id="date" required />
+        </div>
+        <button class="btn">Add Transaction</button>
+      </form>
+    </div>
+
+    <!-- History Section -->
+    <div id="history-section" style="display:none;">
+      <h3>History</h3>
+      <label for="filter">Filter by Category: </label>
+      <select id="filter">
+        <option value="all">All</option>
+        <option value="Food">Food</option>
+        <option value="Transport">Transport</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Salary">Salary</option>
+        <option value="Other">Other</option>
+      </select>
+      <ul id="list" class="list"></ul>
+
+      <!-- ✅ Current Month Summary -->
+      <div id="monthly-summary" class="summary-card">
+        <h3>📅 This Month's Summary</h3>
+        <p id="monthly-income">Income: ₹0</p>
+        <p id="monthly-expense">Expense: ₹0</p>
+        <p id="monthly-balance">Balance: ₹0</p>
+      </div>
+
+      <!-- ✅ Modernized Previous 3 Months -->
+      <button id="toggle-prev-summary" class="btn">Show Previous 3 Months</button>
+      <div id="previous-summary" style="display:none;">
+        <h3>📊 Last 3 Months Summary</h3>
+        <div class="months-grid" id="months-grid"></div>
+        <div id="comparison-chart" class="comparison-chart"></div>
+      </div>
+
+      <button id="clear-history" class="btn danger">Clear History</button>
+
+      <h3>Expense Breakdown</h3>
+      <div id="chart_div" style="width:100%; height:300px;"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
